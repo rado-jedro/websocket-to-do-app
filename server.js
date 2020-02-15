@@ -14,10 +14,20 @@ app.use((req, res) => {
 
 const io = socket(server);
 
-io.on("connection", socket => {
-  console.log(socket.io, "connected");
-
-  socket.on("disconnect", socket => {
-    console.log(socket.io, "disconnected");
+io.on('connection', socket => {
+    console.log('New client! Its id – ' + socket.id);
+    socket.emit('updateData', tasks);
+  
+    socket.on('addTask', newTask => {
+      if (!tasks.find(task => task.id == newTask.id)) {
+        tasks.push(newTask);
+        socket.broadcast.emit('addTask', newTask);
+      }
+    });
+    socket.on('removeTask', (index, task) => {
+      if (tasks.find(taskToRemove => taskToRemove.id == task.id)) {
+        tasks.splice(index, 1);
+        socket.broadcast.emit('removeTask', index, task);
+      }
+    });
   });
-});
