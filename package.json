@@ -1,0 +1,15 @@
+{
+  "name": "websocket-to-do-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/rado-jedro/websocket-to-do-app.git",
+  "author": "Rado Jedro <radoslaw.jedro@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": " nodemon server.js"
+  },
+  "dependencies": {
+    "express": "4.17.1",
+    "nodemon": "^2.0.2"
+  }
+}
