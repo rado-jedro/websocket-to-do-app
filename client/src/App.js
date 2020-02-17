@@ -8,7 +8,11 @@ class App extends React.Component {
 
     this.state = {
       tasks: [],
-      taskName: {}
+      taskName: {
+        name:'',
+        id: uuidv1()
+      }
+      
     };
 
     this.submitForm = this.submitForm.bind(this);
@@ -44,7 +48,7 @@ class App extends React.Component {
     const { tasks } = this.state;
     if (!tasks.find(task => task.id === newTask.id)) {
       tasks.push(newTask);
-      this.setState(tasks);
+      this.setState({ tasks });
     }
   }
 
