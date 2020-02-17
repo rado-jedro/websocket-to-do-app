@@ -10,7 +10,7 @@ class App extends React.Component {
       tasks: [],
       taskName: {
         name:'',
-        id: uuidv1()
+        id:''
       }
       
     };
