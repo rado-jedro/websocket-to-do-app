@@ -46,6 +46,7 @@ class App extends React.Component {
 
   addTask(newTask) {
     const { tasks } = this.state;
+    newTask.id = uuidv1();
     if (!tasks.find(task => task.id === newTask.id)) {
       tasks.push(newTask);
       this.setState({ tasks });
@@ -65,8 +66,7 @@ class App extends React.Component {
   changeValue(event) {
     this.setState({
       taskName: {
-        name: event.target.value,
-        id: uuidv1()
+        name: event.target.value
       }
     });
   }
